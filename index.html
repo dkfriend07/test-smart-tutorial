@@ -567,7 +567,7 @@ and many others</li>
 </span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
 </span></code></pre>
 
-<p>We will put the display logic in draw_visualization function in starter_app.js file. Here is what it should look like.</p>
+<p>We will put the display logic in draw_visualization function in starter_app.js file. In this file we are creating one div for error and one for results. For results div we have two tables. One table is for patient demographics and one for observations. In the script section we are calling extractData() from starter_app.js file. If the call is successfull we will call drawVisualization() from starter_app.js which would make the div for holding results visible. If the call fails we will append text &quot;Failed to call FHIR Service&rdquo; to errors div.</p>
 
 <h1 id="test-your-app">Test your App</h1>
 
