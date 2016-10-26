@@ -2,7 +2,7 @@
 title: SMART on FHIR Starter APP
 
 language_tabs:
-  - javascript
+  - code
 
 search: true
 ---
@@ -63,7 +63,7 @@ After this you will receive an email stating what your Client ID and Launch URL 
 
 > launch.html
 
-```javascript
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -87,6 +87,9 @@ After this you will receive an email stating what your Client ID and Launch URL 
 ```
 
 > Make sure to replace CLIENT_ID with the client id provided in the email.
+
+
+In launch.html we are calling fhir-client.js to authorize the app and the scopes via OAUTH2 by calling FHIR.oauth2.authorize.
 
 FHIR.oauth2.authorize will call the following URL with requested scopes *https://authorization.sandboxcerner.com/tenants/d075cf8b-3261-481d-97e5-ba6c48d3b41f/protocols/oauth2/profiles/smart-v1/personas/provider/authorize?client_id=df7c5a17-52dd-4c88-8a32-cdfb557ba758&response_type=code&scope=patient%2FPatient.read%20patient%2FObservation.read%20launch%20online_access-%20openid%20profile&redirect_uri=https%3A%2F%2Fparthivbhagat.github.io%2Fpb026393.github.io%2F&state=a0d52f29-8ff1-a186-8337-2a9018979f72&aud=https%3A%2F%2Ffhir.sandboxcernerpowerchart.com%2Fdstu2%2Fd075cf8b-3261-481d-97e5-ba6c48d3b41f&launch=d831018a-bd90-48b1-8c91-e6b346c7f1ea*
 
@@ -310,7 +313,7 @@ window.drawVisualization = function(p) {
 ```
 >index.html
 
-```javascript
+```html
 <!DOCTYPE html>
 <html>  
   <head>
@@ -395,7 +398,7 @@ window.drawVisualization = function(p) {
 </html>
 ```
 
-We will put the display logic in draw_visualization function in starter_app.js file. Here is what it should look like.
+We will put the display logic in draw_visualization function in starter_app.js file. In this file we are creating one div for error and one for results. For results div we have two tables. One table is for patient demographics and one for observations. In the script section we are calling extractData() from starter_app.js file. If the call is successfull we will call drawVisualization() from starter_app.js which would make the div for holding results visible. If the call fails we will append text "Failed to call FHIR Service" to errors div.
 
 # Test your App
 Go to your developer portal and click on the App you have registered. Once you are in the App Details you will see client id, redirect url etc. for the App. There is also a Millenium username and password you can use to launch you App. At this time click Begin Testing. A screen will appear which will ask if you need a patient to launch this App. Say yes and select a patient. Once you do that click on Launch. At this time your App will open with the required demographics and observations for the selected patient.
