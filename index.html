@@ -91,7 +91,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;code&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -101,7 +101,7 @@
     <div class="tocify-wrapper">
       <img src="images/logo.png" />
         <div class="lang-selector">
-              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="code">code</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -119,7 +119,7 @@
 
 <h1 id="app-launch-flow">APP Launch Flow</h1>
 
-<p><img title="High Level EHR APP Launch Flow" alt="alt text" src="/images/ehr_launch_seq.PNG" /></p>
+<p><img title="High Level EHR APP Launch Flow" alt="alt text" src="images/ehr_launch_seq.PNG" /></p>
 
 <h1 id="project-set-up">Project Set up</h1>
 
@@ -205,31 +205,33 @@
 <blockquote>
 <p>launch.html</p>
 </blockquote>
-<pre class="highlight javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">html</span> <span class="nx">lang</span><span class="o">=</span><span class="s2">"en"</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">http</span><span class="o">-</span><span class="nx">equiv</span><span class="o">=</span><span class="s2">"Content-Type"</span> <span class="nx">content</span><span class="o">=</span><span class="s2">"text/html; charset=utf-8"</span> <span class="o">/&gt;</span>
-    <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">http</span><span class="o">-</span><span class="nx">equiv</span><span class="o">=</span><span class="s2">"X-UA-Compatible"</span> <span class="nx">content</span><span class="o">=</span><span class="s2">"IE=edge"</span> <span class="o">/&gt;</span>
-    <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">SMART</span> <span class="nx">on</span> <span class="nx">FHIR</span> <span class="nx">Starter</span> <span class="nx">App</span><span class="o">&lt;</span><span class="sr">/title&gt;   </span><span class="err"> 
-</span>  <span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
-</span>  <span class="nx">Loading</span><span class="p">...</span>
-  <span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s1">'./src/js/starter_app.js'</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span>    <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s1">'./lib/fhir-client.min.js'</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span>    <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span>    <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+<pre class="highlight html"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=utf-8"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>SMART on FHIR Starter App<span class="nt">&lt;/title&gt;</span>    
+  <span class="nt">&lt;/head&gt;</span>
+  Loading...
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'./src/js/starter_app.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'./lib/fhir-client.min.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
       <span class="nx">FHIR</span><span class="p">.</span><span class="nx">oauth2</span><span class="p">.</span><span class="nx">authorize</span><span class="p">({</span>
         <span class="s1">'client_id'</span><span class="p">:</span> <span class="s1">'df7c5a17-52dd-4c88-8a32-cdfb557ba758'</span><span class="p">,</span>
         <span class="s1">'scope'</span><span class="p">:</span>  <span class="s1">'patient/Patient.read patient/Observation.read launch online_access openid profile'</span>
       <span class="p">});</span>
-    <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span>  <span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
-</span></code></pre>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
 
 <blockquote>
 <p>Make sure to replace CLIENT_ID with the client id provided in the email.</p>
 </blockquote>
+
+<p>In launch.html we are calling fhir-client.js to authorize the app and the scopes via OAUTH2 by calling FHIR.oauth2.authorize.</p>
 
 <p>FHIR.oauth2.authorize will call the following URL with requested scopes <em>https://authorization.sandboxcerner.com/tenants/d075cf8b-3261-481d-97e5-ba6c48d3b41f/protocols/oauth2/profiles/smart-v1/personas/provider/authorize?client_id=df7c5a17-52dd-4c88-8a32-cdfb557ba758&amp;response_type=code&amp;scope=patient%2FPatient.read%20patient%2FObservation.read%20launch%20online_access-%20openid%20profile&amp;redirect_uri=https%3A%2F%2Fparthivbhagat.github.io%2Fpb026393.github.io%2F&amp;state=a0d52f29-8ff1-a186-8337-2a9018979f72&amp;aud=https%3A%2F%2Ffhir.sandboxcernerpowerchart.com%2Fdstu2%2Fd075cf8b-3261-481d-97e5-ba6c48d3b41f&amp;launch=d831018a-bd90-48b1-8c91-e6b346c7f1ea</em></p>
 
@@ -483,74 +485,74 @@ and many others</li>
 <blockquote>
 <p>index.html</p>
 </blockquote>
-<pre class="highlight javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>  
-  <span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">http</span><span class="o">-</span><span class="nx">equiv</span><span class="o">=</span><span class="s1">'X-UA-Compatible'</span> <span class="nx">content</span><span class="o">=</span><span class="s1">'IE=edge'</span> <span class="o">/&gt;</span>
-    <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">http</span><span class="o">-</span><span class="nx">equiv</span><span class="o">=</span><span class="s1">'Content-Type'</span> <span class="nx">content</span><span class="o">=</span><span class="s1">'text/html; charset=utf-8'</span> <span class="o">/&gt;</span>    
-    <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">SMART</span> <span class="nx">Starter</span> <span class="nx">App</span><span class="o">&lt;</span><span class="sr">/title&gt;   </span><span class="err"> 
-</span>
-    <span class="o">&lt;</span><span class="nx">link</span> <span class="nx">rel</span><span class="o">=</span><span class="s1">'stylesheet'</span> <span class="nx">type</span><span class="o">=</span><span class="s1">'text/css'</span> <span class="nx">href</span><span class="o">=</span><span class="s1">'./src/css/starter_app.css'</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
-</span>  <span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">SMART</span> <span class="nx">on</span> <span class="nx">FHIR</span> <span class="nx">Starter</span> <span class="nx">App</span><span class="o">&lt;</span><span class="sr">/h2</span><span class="err">&gt;
-</span>    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s1">'errors'</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
-</span>    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"loading"</span><span class="o">&gt;</span><span class="nx">Loading</span><span class="p">...</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
-</span>    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s1">'holder'</span> <span class="o">&gt;</span>
+<pre class="highlight html"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>  
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">'X-UA-Compatible'</span> <span class="na">content=</span><span class="s">'IE=edge'</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">'Content-Type'</span> <span class="na">content=</span><span class="s">'text/html; charset=utf-8'</span> <span class="nt">/&gt;</span>    
+    <span class="nt">&lt;title&gt;</span>SMART Starter App<span class="nt">&lt;/title&gt;</span>    
 
-      <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">Patient</span> <span class="nx">Resource</span><span class="o">&lt;</span><span class="sr">/h2</span><span class="err">&gt;
-</span>      <span class="o">&lt;</span><span class="nx">table</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nx">tr</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="nx">th</span><span class="o">&gt;</span><span class="nx">First</span> <span class="nx">Name</span><span class="err">:</span><span class="o">&lt;</span><span class="sr">/th</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="nx">td</span> <span class="nx">id</span><span class="o">=</span><span class="s1">'fname'</span><span class="o">&gt;&lt;</span><span class="sr">/td&gt;           </span><span class="err"> 
-</span>        <span class="o">&lt;</span><span class="sr">/tr</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="nx">tr</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="nx">th</span><span class="o">&gt;</span><span class="nx">Last</span> <span class="nx">Name</span><span class="err">:</span><span class="o">&lt;</span><span class="sr">/th</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="nx">td</span> <span class="nx">id</span><span class="o">=</span><span class="s1">'lname'</span><span class="o">&gt;&lt;</span><span class="sr">/td</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="sr">/tr</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="nx">tr</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="nx">th</span><span class="o">&gt;</span><span class="nx">Gender</span><span class="err">:</span><span class="o">&lt;</span><span class="sr">/th</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="nx">td</span> <span class="nx">id</span><span class="o">=</span><span class="s1">'gender'</span><span class="o">&gt;&lt;</span><span class="sr">/td&gt;         </span><span class="err"> 
-</span>        <span class="o">&lt;</span><span class="sr">/tr</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="nx">tr</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="nx">th</span><span class="o">&gt;</span><span class="nb">Date</span> <span class="nx">of</span> <span class="nx">Birth</span><span class="err">:</span><span class="o">&lt;</span><span class="sr">/th</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="nx">td</span> <span class="nx">id</span><span class="o">=</span><span class="s1">'birthday'</span><span class="o">&gt;&lt;</span><span class="sr">/td&gt;           </span><span class="err"> 
-</span>        <span class="o">&lt;</span><span class="sr">/tr</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="nx">tr</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="nx">th</span><span class="o">&gt;</span><span class="nx">Age</span><span class="err">:</span><span class="o">&lt;</span><span class="sr">/th</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="nx">td</span> <span class="nx">id</span><span class="o">=</span><span class="s1">'age'</span><span class="o">&gt;&lt;</span><span class="sr">/td&gt;           </span><span class="err"> 
-</span>        <span class="o">&lt;</span><span class="sr">/tr&gt;      </span><span class="err"> 
-</span>      <span class="o">&lt;</span><span class="sr">/table</span><span class="err">&gt;
-</span>      <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">Observation</span> <span class="nx">Resource</span><span class="o">&lt;</span><span class="sr">/h2</span><span class="err">&gt;
-</span>      <span class="o">&lt;</span><span class="nx">table</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nx">tr</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="nx">th</span><span class="o">&gt;</span><span class="nx">Height</span><span class="err">:</span><span class="o">&lt;</span><span class="sr">/th&gt;         </span><span class="err"> 
-</span>          <span class="o">&lt;</span><span class="nx">td</span> <span class="nx">id</span><span class="o">=</span><span class="s1">'height'</span><span class="o">&gt;&lt;</span><span class="sr">/td&gt;           </span><span class="err"> 
-</span>        <span class="o">&lt;</span><span class="sr">/tr</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="nx">tr</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="nx">th</span><span class="o">&gt;</span><span class="nx">Systolic</span> <span class="nx">Blood</span> <span class="nx">Pressure</span><span class="err">:</span><span class="o">&lt;</span><span class="sr">/th</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="nx">td</span> <span class="nx">id</span><span class="o">=</span><span class="s1">'systolicbp'</span><span class="o">&gt;&lt;</span><span class="sr">/td</span><span class="err">&gt;
-</span>
-        <span class="o">&lt;</span><span class="sr">/tr</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="nx">tr</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="nx">th</span><span class="o">&gt;</span><span class="nx">Diastolic</span> <span class="nx">Blood</span> <span class="nx">Pressure</span><span class="err">:</span><span class="o">&lt;</span><span class="sr">/th</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="nx">td</span> <span class="nx">id</span><span class="o">=</span><span class="s1">'diastolicbp'</span><span class="o">&gt;&lt;</span><span class="sr">/td</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="sr">/tr</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="nx">tr</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="nx">th</span><span class="o">&gt;</span><span class="nx">LDL</span><span class="err">:</span><span class="o">&lt;</span><span class="sr">/th</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="nx">td</span> <span class="nx">id</span><span class="o">=</span><span class="s1">'ldl'</span><span class="o">&gt;&lt;</span><span class="sr">/td</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="sr">/tr</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="nx">tr</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="nx">th</span><span class="o">&gt;</span><span class="nx">HDL</span><span class="err">:</span><span class="o">&lt;</span><span class="sr">/th</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="nx">td</span> <span class="nx">id</span><span class="o">=</span><span class="s1">'hdl'</span><span class="o">&gt;&lt;</span><span class="sr">/td</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="sr">/tr</span><span class="err">&gt;
-</span>      <span class="o">&lt;</span><span class="sr">/table</span><span class="err">&gt;
-</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
-</span>    <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s1">'./src/js/starter_app.js'</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span>    <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s1">'./lib/fhir-client.min.js'</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span>    <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span>    <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">'stylesheet'</span> <span class="na">type=</span><span class="s">'text/css'</span> <span class="na">href=</span><span class="s">'./src/css/starter_app.css'</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>SMART on FHIR Starter App<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">'errors'</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"loading"</span><span class="nt">&gt;</span>Loading...<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">'holder'</span> <span class="nt">&gt;</span>
+
+      <span class="nt">&lt;h2&gt;</span>Patient Resource<span class="nt">&lt;/h2&gt;</span>
+      <span class="nt">&lt;table&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;th&gt;</span>First Name:<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'fname'</span><span class="nt">&gt;&lt;/td&gt;</span>            
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;th&gt;</span>Last Name:<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'lname'</span><span class="nt">&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;th&gt;</span>Gender:<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'gender'</span><span class="nt">&gt;&lt;/td&gt;</span>          
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;th&gt;</span>Date of Birth:<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'birthday'</span><span class="nt">&gt;&lt;/td&gt;</span>            
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;th&gt;</span>Age:<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'age'</span><span class="nt">&gt;&lt;/td&gt;</span>            
+        <span class="nt">&lt;/tr&gt;</span>       
+      <span class="nt">&lt;/table&gt;</span>
+      <span class="nt">&lt;h2&gt;</span>Observation Resource<span class="nt">&lt;/h2&gt;</span>
+      <span class="nt">&lt;table&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;th&gt;</span>Height:<span class="nt">&lt;/th&gt;</span>          
+          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'height'</span><span class="nt">&gt;&lt;/td&gt;</span>            
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;th&gt;</span>Systolic Blood Pressure:<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'systolicbp'</span><span class="nt">&gt;&lt;/td&gt;</span>
+
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;th&gt;</span>Diastolic Blood Pressure:<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'diastolicbp'</span><span class="nt">&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;th&gt;</span>LDL:<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'ldl'</span><span class="nt">&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;th&gt;</span>HDL:<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'hdl'</span><span class="nt">&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+      <span class="nt">&lt;/table&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'./src/js/starter_app.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'./lib/fhir-client.min.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
       <span class="nx">extractData</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span>
         <span class="c1">//Display Patient Demographics and Observations if extractData was success</span>
         <span class="kd">function</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span>          
@@ -562,12 +564,12 @@ and many others</li>
           <span class="nx">$</span><span class="p">(</span><span class="s1">'#errors'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">'&lt;p&gt; Failed to call FHIR Service &lt;/p&gt;'</span><span class="p">);</span>
         <span class="p">}</span>
       <span class="p">);</span>
-    <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span>  <span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
-</span></code></pre>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
 
-<p>We will put the display logic in draw_visualization function in starter_app.js file. Here is what it should look like.</p>
+<p>We will put the display logic in draw_visualization function in starter_app.js file. In this file we are creating one div for error and one for results. For results div we have two tables. One table is for patient demographics and one for observations. In the script section we are calling extractData() from starter_app.js file. If the call is successfull we will call drawVisualization() from starter_app.js which would make the div for holding results visible. If the call fails we will append text &quot;Failed to call FHIR Service&rdquo; to errors div.</p>
 
 <h1 id="test-your-app">Test your App</h1>
 
@@ -576,7 +578,7 @@ and many others</li>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="code">code</a>
           </div>
       </div>
     </div>
