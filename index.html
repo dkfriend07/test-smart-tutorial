@@ -99,7 +99,7 @@
       </span>
     </a>
     <div class="tocify-wrapper">
-      <img src="images/logo.PNG" />
+      <img src="images/logo.png" />
         <div class="lang-selector">
               <a href="#" data-language-name="code">code</a>
         </div>
@@ -119,13 +119,13 @@
 
 <h1 id="app-launch-flow">APP Launch Flow</h1>
 
-<p><img title="High Level EHR APP Launch Flow" alt="alt text" src="images/ehr_launch_seq.PNG" /></p>
+<p><img title="High Level EHR APP Launch Flow" alt="alt text" src="/images/ehr_launch_seq.PNG" /></p>
 
-<h1 id="project-set-up">Project Set up</h1>
+<h1 id="project-setup">Project Setup</h1>
 
-<p>Clone the project structure from <a href="https://github.com/parthivbhagat/smart-starter-app-es5">smart-starter-app</a>. </p>
+<p>Clone this tutorial from <a href="https://github.com/parthivbhagat/smart-tutorial">smart-tutorial</a>.</p>
 
-<p>The project structure includes follwing important files:</p>
+<p>The example-smart-app contained in the soucrce folder includes follwing important files:</p>
 
 <p><strong>fhir-client.js</strong></p>
 
@@ -210,7 +210,7 @@
   <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=utf-8"</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;title&gt;</span>SMART on FHIR Starter App<span class="nt">&lt;/title&gt;</span>    
+    <span class="nt">&lt;title&gt;</span>SMART on FHIR Starter App<span class="nt">&lt;/title&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   Loading...
   <span class="nt">&lt;body&gt;</span>
@@ -285,8 +285,8 @@
 We will always include launch, online_access, openid &amp; profile scopes to our APP.</p>
 
 <aside class="notice">
-Cerner does not allow use of wildcards(*). So instead of patient/\*.read you will need specify a particular scope of resource you will be using. Something like patient/Patient.read, patient/Observation.read etc. For list of resources visit [http://fhir.cerner.com/](http://fhir.cerner.com/) 
-</aside> 
+Cerner does not allow use of wildcards(*). So instead of patient/\*.read you will need specify a particular scope of resource you will be using. Something like patient/Patient.read, patient/Observation.read etc. For list of resources visit [http://fhir.cerner.com/](http://fhir.cerner.com/)
+</aside>
 
 <h1 id="access-fhir-resource">Access FHIR Resource</h1>
 
@@ -295,19 +295,19 @@ Cerner does not allow use of wildcards(*). So instead of patient/\*.read you wil
 </blockquote>
 <pre class="highlight javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nb">window</span><span class="p">){</span>
   <span class="nb">window</span><span class="p">.</span><span class="nx">extractData</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">ret</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Deferred</span><span class="p">();</span> 
+    <span class="kd">var</span> <span class="nx">ret</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Deferred</span><span class="p">();</span>
 
     <span class="kd">function</span> <span class="nx">onError</span><span class="p">()</span> <span class="p">{</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Loading error'</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
       <span class="nx">ret</span><span class="p">.</span><span class="nx">reject</span><span class="p">();</span>
-    <span class="p">}</span>     
+    <span class="p">}</span>
 
     <span class="kd">function</span> <span class="nx">onReady</span><span class="p">(</span><span class="nx">smart</span><span class="p">)</span>  <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">smart</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s1">'patient'</span><span class="p">))</span> <span class="p">{</span> 
+      <span class="k">if</span> <span class="p">(</span><span class="nx">smart</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s1">'patient'</span><span class="p">))</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">patient</span> <span class="o">=</span> <span class="nx">smart</span><span class="p">.</span><span class="nx">patient</span><span class="p">;</span>
         <span class="kd">var</span> <span class="nx">pt</span> <span class="o">=</span> <span class="nx">patient</span><span class="p">.</span><span class="nx">read</span><span class="p">();</span>
         <span class="kd">var</span> <span class="nx">obv</span> <span class="o">=</span> <span class="nx">smart</span><span class="p">.</span><span class="nx">patient</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">fetchAll</span><span class="p">({</span>
-                      <span class="na">type</span><span class="p">:</span> <span class="s1">'Observation'</span><span class="p">,</span> 
+                      <span class="na">type</span><span class="p">:</span> <span class="s1">'Observation'</span><span class="p">,</span>
                       <span class="na">query</span><span class="p">:</span> <span class="p">{</span>
                         <span class="na">code</span><span class="p">:</span> <span class="p">{</span>
                           <span class="na">$or</span><span class="p">:</span> <span class="p">[</span><span class="s1">'http://loinc.org|8302-2'</span><span class="p">,</span> <span class="s1">'http://loinc.org|8462-4'</span><span class="p">,</span>
@@ -322,8 +322,8 @@ Cerner does not allow use of wildcards(*). So instead of patient/\*.read you wil
         <span class="nx">$</span><span class="p">.</span><span class="nx">when</span><span class="p">(</span><span class="nx">pt</span><span class="p">,</span> <span class="nx">obv</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">patient</span><span class="p">,</span> <span class="nx">obv</span><span class="p">)</span> <span class="p">{</span>
           <span class="kd">var</span> <span class="nx">byCodes</span> <span class="o">=</span> <span class="nx">smart</span><span class="p">.</span><span class="nx">byCodes</span><span class="p">(</span><span class="nx">obv</span><span class="p">,</span> <span class="s1">'code'</span><span class="p">);</span>
           <span class="kd">var</span> <span class="nx">gender</span> <span class="o">=</span> <span class="nx">patient</span><span class="p">.</span><span class="nx">gender</span><span class="p">;</span>
-          <span class="kd">var</span> <span class="nx">dob</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">patient</span><span class="p">.</span><span class="nx">birthDate</span><span class="p">);</span>     
-          <span class="kd">var</span> <span class="nx">day</span> <span class="o">=</span> <span class="nx">dob</span><span class="p">.</span><span class="nx">getDate</span><span class="p">();</span> 
+          <span class="kd">var</span> <span class="nx">dob</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">patient</span><span class="p">.</span><span class="nx">birthDate</span><span class="p">);</span>
+          <span class="kd">var</span> <span class="nx">day</span> <span class="o">=</span> <span class="nx">dob</span><span class="p">.</span><span class="nx">getDate</span><span class="p">();</span>
           <span class="kd">var</span> <span class="nx">monthIndex</span> <span class="o">=</span> <span class="nx">dob</span><span class="p">.</span><span class="nx">getMonth</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
           <span class="kd">var</span> <span class="nx">year</span> <span class="o">=</span> <span class="nx">dob</span><span class="p">.</span><span class="nx">getFullYear</span><span class="p">();</span>
 
@@ -342,7 +342,7 @@ Cerner does not allow use of wildcards(*). So instead of patient/\*.read you wil
           <span class="kd">var</span> <span class="nx">hdl</span> <span class="o">=</span> <span class="nx">byCodes</span><span class="p">(</span><span class="s1">'2085-9'</span><span class="p">);</span>
           <span class="kd">var</span> <span class="nx">ldl</span> <span class="o">=</span> <span class="nx">byCodes</span><span class="p">(</span><span class="s1">'2089-1'</span><span class="p">);</span>
 
-          <span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="nx">defaultPatient</span><span class="p">();</span>          
+          <span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="nx">defaultPatient</span><span class="p">();</span>
           <span class="nx">p</span><span class="p">.</span><span class="nx">birthday</span> <span class="o">=</span> <span class="nx">dobStr</span><span class="p">;</span>
           <span class="nx">p</span><span class="p">.</span><span class="nx">gender</span> <span class="o">=</span> <span class="nx">gender</span><span class="p">;</span>
           <span class="nx">p</span><span class="p">.</span><span class="nx">fname</span> <span class="o">=</span> <span class="nx">fname</span><span class="p">;</span>
@@ -354,12 +354,12 @@ Cerner does not allow use of wildcards(*). So instead of patient/\*.read you wil
           <span class="p">}</span>
 
           <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">systolicbp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">'undefined'</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">systolicbp</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">valueQuantity</span><span class="p">.</span><span class="nx">value</span> <span class="o">!=</span> <span class="s1">'undefined'</span><span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">systolicbp</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">valueQuantity</span><span class="p">.</span><span class="nx">unit</span> <span class="o">!=</span> <span class="s1">'undefined'</span><span class="p">)</span>  <span class="p">{</span>
-            <span class="nx">p</span><span class="p">.</span><span class="nx">systolicbp</span> <span class="o">=</span> <span class="nx">systolicbp</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">valueQuantity</span><span class="p">.</span><span class="nx">value</span> <span class="o">+</span> 
+            <span class="nx">p</span><span class="p">.</span><span class="nx">systolicbp</span> <span class="o">=</span> <span class="nx">systolicbp</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">valueQuantity</span><span class="p">.</span><span class="nx">value</span> <span class="o">+</span>
                                   <span class="s1">' '</span> <span class="o">+</span> <span class="nx">systolicbp</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">valueQuantity</span><span class="p">.</span><span class="nx">unit</span><span class="p">;</span>
           <span class="p">}</span>
 
           <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">diastolicbp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">'undefined'</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">diastolicbp</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">valueQuantity</span><span class="p">.</span><span class="nx">value</span> <span class="o">!=</span> <span class="s1">'undefined'</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">diastolicbp</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">valueQuantity</span><span class="p">.</span><span class="nx">unit</span> <span class="o">!=</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">p</span><span class="p">.</span><span class="nx">diastolicbp</span> <span class="o">=</span> <span class="nx">diastolicbp</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">valueQuantity</span><span class="p">.</span><span class="nx">value</span> <span class="o">+</span> 
+            <span class="nx">p</span><span class="p">.</span><span class="nx">diastolicbp</span> <span class="o">=</span> <span class="nx">diastolicbp</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">valueQuantity</span><span class="p">.</span><span class="nx">value</span> <span class="o">+</span>
                                   <span class="s1">' '</span> <span class="o">+</span> <span class="nx">diastolicbp</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">valueQuantity</span><span class="p">.</span><span class="nx">unit</span><span class="p">;</span>
           <span class="p">}</span>
 
@@ -372,9 +372,9 @@ Cerner does not allow use of wildcards(*). So instead of patient/\*.read you wil
           <span class="p">}</span>
           <span class="nx">ret</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
         <span class="p">});</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> 
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">onError</span><span class="p">();</span>
-      <span class="p">}</span>      
+      <span class="p">}</span>
     <span class="p">}</span>
 
     <span class="nx">FHIR</span><span class="p">.</span><span class="nx">oauth2</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="nx">onReady</span><span class="p">,</span> <span class="nx">onError</span><span class="p">);</span>
@@ -419,13 +419,13 @@ Cerner does not allow use of wildcards(*). So instead of patient/\*.read you wil
 
   <span class="p">}</span>
 
-  <span class="nb">window</span><span class="p">.</span><span class="nx">drawVisualization</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span> 
+  <span class="nb">window</span><span class="p">.</span><span class="nx">drawVisualization</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'#holder'</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'#loading'</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'#fname'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">fname</span><span class="p">);</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'#lname'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">lname</span><span class="p">);</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'#gender'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">gender</span><span class="p">);</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'#birthday'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">birthday</span><span class="p">);</span>  
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#birthday'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">birthday</span><span class="p">);</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'#age'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'#height'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'#systolicbp'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">systolicbp</span><span class="p">);</span>
@@ -466,13 +466,13 @@ and many others</li>
 <blockquote>
 <p>starter_app.js</p>
 </blockquote>
-<pre class="highlight javascript"><code><span class="nb">window</span><span class="p">.</span><span class="nx">drawVisualization</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span> 
+<pre class="highlight javascript"><code><span class="nb">window</span><span class="p">.</span><span class="nx">drawVisualization</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'#holder'</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'#loading'</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'#fname'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">fname</span><span class="p">);</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'#lname'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">lname</span><span class="p">);</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'#gender'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">gender</span><span class="p">);</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'#birthday'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">birthday</span><span class="p">);</span>  
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#birthday'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">birthday</span><span class="p">);</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'#age'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'#height'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'#systolicbp'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">systolicbp</span><span class="p">);</span>
@@ -486,11 +486,11 @@ and many others</li>
 <p>index.html</p>
 </blockquote>
 <pre class="highlight html"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>  
+<span class="nt">&lt;html&gt;</span>
   <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">'X-UA-Compatible'</span> <span class="na">content=</span><span class="s">'IE=edge'</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">'Content-Type'</span> <span class="na">content=</span><span class="s">'text/html; charset=utf-8'</span> <span class="nt">/&gt;</span>    
-    <span class="nt">&lt;title&gt;</span>SMART Starter App<span class="nt">&lt;/title&gt;</span>    
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">'Content-Type'</span> <span class="na">content=</span><span class="s">'text/html; charset=utf-8'</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>SMART Starter App<span class="nt">&lt;/title&gt;</span>
 
     <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">'stylesheet'</span> <span class="na">type=</span><span class="s">'text/css'</span> <span class="na">href=</span><span class="s">'./src/css/starter_app.css'</span><span class="nt">&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
@@ -505,7 +505,7 @@ and many others</li>
       <span class="nt">&lt;table&gt;</span>
         <span class="nt">&lt;tr&gt;</span>
           <span class="nt">&lt;th&gt;</span>First Name:<span class="nt">&lt;/th&gt;</span>
-          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'fname'</span><span class="nt">&gt;&lt;/td&gt;</span>            
+          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'fname'</span><span class="nt">&gt;&lt;/td&gt;</span>
         <span class="nt">&lt;/tr&gt;</span>
         <span class="nt">&lt;tr&gt;</span>
           <span class="nt">&lt;th&gt;</span>Last Name:<span class="nt">&lt;/th&gt;</span>
@@ -513,22 +513,22 @@ and many others</li>
         <span class="nt">&lt;/tr&gt;</span>
         <span class="nt">&lt;tr&gt;</span>
           <span class="nt">&lt;th&gt;</span>Gender:<span class="nt">&lt;/th&gt;</span>
-          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'gender'</span><span class="nt">&gt;&lt;/td&gt;</span>          
+          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'gender'</span><span class="nt">&gt;&lt;/td&gt;</span>
         <span class="nt">&lt;/tr&gt;</span>
         <span class="nt">&lt;tr&gt;</span>
           <span class="nt">&lt;th&gt;</span>Date of Birth:<span class="nt">&lt;/th&gt;</span>
-          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'birthday'</span><span class="nt">&gt;&lt;/td&gt;</span>            
+          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'birthday'</span><span class="nt">&gt;&lt;/td&gt;</span>
         <span class="nt">&lt;/tr&gt;</span>
         <span class="nt">&lt;tr&gt;</span>
           <span class="nt">&lt;th&gt;</span>Age:<span class="nt">&lt;/th&gt;</span>
-          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'age'</span><span class="nt">&gt;&lt;/td&gt;</span>            
-        <span class="nt">&lt;/tr&gt;</span>       
+          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'age'</span><span class="nt">&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
       <span class="nt">&lt;/table&gt;</span>
       <span class="nt">&lt;h2&gt;</span>Observation Resource<span class="nt">&lt;/h2&gt;</span>
       <span class="nt">&lt;table&gt;</span>
         <span class="nt">&lt;tr&gt;</span>
-          <span class="nt">&lt;th&gt;</span>Height:<span class="nt">&lt;/th&gt;</span>          
-          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'height'</span><span class="nt">&gt;&lt;/td&gt;</span>            
+          <span class="nt">&lt;th&gt;</span>Height:<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;td</span> <span class="na">id=</span><span class="s">'height'</span><span class="nt">&gt;&lt;/td&gt;</span>
         <span class="nt">&lt;/tr&gt;</span>
         <span class="nt">&lt;tr&gt;</span>
           <span class="nt">&lt;th&gt;</span>Systolic Blood Pressure:<span class="nt">&lt;/th&gt;</span>
@@ -555,9 +555,9 @@ and many others</li>
     <span class="nt">&lt;script&gt;</span>
       <span class="nx">extractData</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span>
         <span class="c1">//Display Patient Demographics and Observations if extractData was success</span>
-        <span class="kd">function</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span>          
+        <span class="kd">function</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span>
           <span class="nx">drawVisualization</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
-        <span class="p">},</span> 
+        <span class="p">},</span>
 
         <span class="c1">//Display 'Failed to call FHIR Service' if extractData failed</span>
         <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
