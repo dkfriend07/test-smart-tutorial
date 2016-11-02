@@ -11,7 +11,7 @@ search: true
 
 This tutorial will walk you through creating an app in Cerners SMART on FHIR ecosystem.
 
-After completeing this tutorial you know know how to:
+After completing this tutorial you know know how to:
 
 * Create a basic SMART on FHIR app.
 * Self register an app with Cerner.
@@ -25,7 +25,7 @@ After completeing this tutorial you know know how to:
 
 Clone this tutorial from [smart-tutorial](https://github.com/parthivbhagat/smart-tutorial).
 
-The example-smart-app contained in the soucrce folder includes follwing important files:
+The example-smart-app contained in the source folder includes following important files:
 
 **fhir-client.js**
 
@@ -58,7 +58,7 @@ App Type | Select Patient facing App.
 FHIR Spec | Select DSTU2
 Authorized | Select yes. Authorized App will go through secured OAuth2 login.
 Standard Scopes | These are standard scopes that are required to launch SMART App.
-User Scopes | Dont select anything here
+User Scopes | Don't select anything here
 Patient Scopes | Select Patient and Observation scopes
 
 and click Register. This will send request to Cerner FHIR group for them to create client id for the app authorization.
@@ -404,10 +404,10 @@ window.drawVisualization = function(p) {
 </html>
 ```
 
-We will put the display logic in draw_visualization function in starter_app.js file. In this file we are creating one div for error and one for results. For results div we have two tables. One table is for patient demographics and one for observations. In the script section we are calling extractData() from starter_app.js file. If the call is successfull we will call drawVisualization() from starter_app.js which would make the div for holding results visible. If the call fails we will append text "Failed to call FHIR Service" to errors div.
+We will put the display logic in draw_visualization function in starter_app.js file. In this file we are creating one div for error and one for results. For results div we have two tables. One table is for patient demographics and one for observations. In the script section we are calling extractData() from starter_app.js file. If the call is successful we will call drawVisualization() from starter_app.js which would make the div for holding results visible. If the call fails we will append text "Failed to call FHIR Service" to errors div.
 
 # Test your App
-Go to your developer portal and click on the App you have registered. Once you are in the App Details you will see client id, redirect url etc. for the App. There is also a Millenium username and password you can use to launch you App. At this time click Begin Testing. A screen will appear which will ask if you need a patient to launch this App. Say yes and select a patient. Once you do that click on Launch. At this time your App will open with the required demographics and observations for the selected patient.
+Go to your developer portal and click on the App you have registered. Once you are in the App Details you will see client id, redirect url etc. for the App. There is also a Millennium username and password you can use to launch you App. At this time click Begin Testing. A screen will appear which will ask if you need a patient to launch this App. Say yes and select a patient. Once you do that click on Launch. At this time your App will open with the required demographics and observations for the selected patient.
 
 
 
