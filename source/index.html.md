@@ -15,11 +15,11 @@ This document will help you get started on how to use SMART on FHIR API to creat
 
 ![alt text](ehr_launch_seq.PNG "High Level EHR APP Launch Flow")
 
-# Project Set up
+# Project Setup
 
-Clone the project structure from [smart-starter-app](https://github.com/parthivbhagat/smart-starter-app-es5). 
+Clone this tutorial from [smart-tutorial](https://github.com/parthivbhagat/smart-tutorial).
 
-The project structure includes follwing important files:
+The example-smart-app contained in the soucrce folder includes follwing important files:
 
 **fhir-client.js**
 
@@ -69,7 +69,7 @@ After this you will receive an email stating what your Client ID and Launch URL 
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>SMART on FHIR Starter App</title>    
+    <title>SMART on FHIR Starter App</title>
   </head>
   Loading...
   <body>
@@ -118,8 +118,8 @@ For our APP we will use Patient.read, Observation.read.
 We will always include launch, online_access, openid & profile scopes to our APP.
 
 <aside class="notice">
-Cerner does not allow use of wildcards(*). So instead of patient/\*.read you will need specify a particular scope of resource you will be using. Something like patient/Patient.read, patient/Observation.read etc. For list of resources visit [http://fhir.cerner.com/](http://fhir.cerner.com/) 
-</aside> 
+Cerner does not allow use of wildcards(*). So instead of patient/\*.read you will need specify a particular scope of resource you will be using. Something like patient/Patient.read, patient/Observation.read etc. For list of resources visit [http://fhir.cerner.com/](http://fhir.cerner.com/)
+</aside>
 
 # Access FHIR Resource
 
@@ -128,19 +128,19 @@ Cerner does not allow use of wildcards(*). So instead of patient/\*.read you wil
 ```javascript
 (function(window){
   window.extractData = function() {
-    var ret = $.Deferred(); 
-  
+    var ret = $.Deferred();
+
     function onError() {
       console.log('Loading error', arguments);
       ret.reject();
-    }     
+    }
 
     function onReady(smart)  {
-      if (smart.hasOwnProperty('patient')) { 
+      if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
         var pt = patient.read();
         var obv = smart.patient.api.fetchAll({
-                      type: 'Observation', 
+                      type: 'Observation',
                       query: {
                         code: {
                           $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
@@ -149,14 +149,14 @@ Cerner does not allow use of wildcards(*). So instead of patient/\*.read you wil
                               }
                              }
                     });
-        
+
         $.when(pt, obv).fail(onError);
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
-          var dob = new Date(patient.birthDate);     
-          var day = dob.getDate(); 
+          var dob = new Date(patient.birthDate);
+          var day = dob.getDate();
           var monthIndex = dob.getMonth() + 1;
           var year = dob.getFullYear();
 
@@ -175,7 +175,7 @@ Cerner does not allow use of wildcards(*). So instead of patient/\*.read you wil
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
 
-          var p = defaultPatient();          
+          var p = defaultPatient();
           p.birthday = dobStr;
           p.gender = gender;
           p.fname = fname;
@@ -185,17 +185,17 @@ Cerner does not allow use of wildcards(*). So instead of patient/\*.read you wil
           if(typeof height[0] != 'undefined' && typeof height[0].valueQuantity.value != 'undefined' && typeof height[0].valueQuantity.unit != 'undefined') {
             p.height = height[0].valueQuantity.value + ' ' + height[0].valueQuantity.unit;
           }
-          
+
           if(typeof systolicbp[0] != 'undefined' && typeof systolicbp[0].valueQuantity.value != 'undefined'&& typeof systolicbp[0].valueQuantity.unit != 'undefined')  {
-            p.systolicbp = systolicbp[0].valueQuantity.value + 
+            p.systolicbp = systolicbp[0].valueQuantity.value +
                                   ' ' + systolicbp[0].valueQuantity.unit;
           }
 
           if(typeof diastolicbp[0] != 'undefined' && typeof diastolicbp[0].valueQuantity.value != 'undefined' && typeof diastolicbp[0].valueQuantity.unit != 'undefined') {
-            p.diastolicbp = diastolicbp[0].valueQuantity.value + 
+            p.diastolicbp = diastolicbp[0].valueQuantity.value +
                                   ' ' + diastolicbp[0].valueQuantity.unit;
           }
-          
+
           if(typeof hdl[0] != 'undefined' && typeof hdl[0].valueQuantity.value != 'undefined' && typeof hdl[0].valueQuantity.unit != 'undefined') {
             p.hdl = hdl[0].valueQuantity.value + ' ' + hdl[0].valueQuantity.unit;
           }
@@ -205,11 +205,11 @@ Cerner does not allow use of wildcards(*). So instead of patient/\*.read you wil
           }
           ret.resolve(p);
         });
-      } else { 
+      } else {
         onError();
-      }      
+      }
     }
-    
+
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
 
@@ -249,16 +249,16 @@ Cerner does not allow use of wildcards(*). So instead of patient/\*.read you wil
     else {
       return undefined;
     }
-    
+
   }
 
-  window.drawVisualization = function(p) { 
+  window.drawVisualization = function(p) {
     $('#holder').show();
     $('#loading').hide();
     $('#fname').html(p.fname);
     $('#lname').html(p.lname);
     $('#gender').html(p.gender);
-    $('#birthday').html(p.birthday);  
+    $('#birthday').html(p.birthday);
     $('#age').html(p.age);
     $('#height').html(p.height);
     $('#systolicbp').html(p.systolicbp);
@@ -274,7 +274,7 @@ Once the client is initialized, you can obtain the context in which it was launc
 
 * *smart.user.read()*
 * *smart.patient.read()*
-  
+
 Both of these return a jQuery Deferred object which you can register a success callback to process the returned FHIR resource.
 
 
@@ -296,13 +296,13 @@ smart.patient.api.fetchAll({type: 'Observation', query:''}) calls FHIR server to
 >starter_app.js
 
 ```javascript
-window.drawVisualization = function(p) { 
+window.drawVisualization = function(p) {
     $('#holder').show();
     $('#loading').hide();
     $('#fname').html(p.fname);
     $('#lname').html(p.lname);
     $('#gender').html(p.gender);
-    $('#birthday').html(p.birthday);  
+    $('#birthday').html(p.birthday);
     $('#age').html(p.age);
     $('#height').html(p.height);
     $('#systolicbp').html(p.systolicbp);
@@ -315,12 +315,12 @@ window.drawVisualization = function(p) {
 
 ```html
 <!DOCTYPE html>
-<html>  
+<html>
   <head>
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
-    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />    
-    <title>SMART Starter App</title>    
-  
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <title>SMART Starter App</title>
+
     <link rel='stylesheet' type='text/css' href='./src/css/starter_app.css'>
   </head>
   <body>
@@ -334,7 +334,7 @@ window.drawVisualization = function(p) {
       <table>
         <tr>
           <th>First Name:</th>
-          <td id='fname'></td>            
+          <td id='fname'></td>
         </tr>
         <tr>
           <th>Last Name:</th>
@@ -342,27 +342,27 @@ window.drawVisualization = function(p) {
         </tr>
         <tr>
           <th>Gender:</th>
-          <td id='gender'></td>          
+          <td id='gender'></td>
         </tr>
         <tr>
           <th>Date of Birth:</th>
-          <td id='birthday'></td>            
+          <td id='birthday'></td>
         </tr>
         <tr>
           <th>Age:</th>
-          <td id='age'></td>            
-        </tr>       
+          <td id='age'></td>
+        </tr>
       </table>
       <h2>Observation Resource</h2>
       <table>
         <tr>
-          <th>Height:</th>          
-          <td id='height'></td>            
+          <th>Height:</th>
+          <td id='height'></td>
         </tr>
         <tr>
           <th>Systolic Blood Pressure:</th>
           <td id='systolicbp'></td>
-            
+
         </tr>
         <tr>
           <th>Diastolic Blood Pressure:</th>
@@ -384,10 +384,10 @@ window.drawVisualization = function(p) {
     <script>
       extractData().then(
         //Display Patient Demographics and Observations if extractData was success
-        function(p) {          
+        function(p) {
           drawVisualization(p);
-        }, 
-        
+        },
+
         //Display 'Failed to call FHIR Service' if extractData failed
         function() {
           $('#errors').html('<p> Failed to call FHIR Service </p>');
