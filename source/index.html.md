@@ -9,9 +9,15 @@ search: true
 
 # Introduction
 
-This document will help you get started on how to use SMART on FHIR API to create your app with Cerner.
+This tutorial will walk you through creating an app in Cerners SMART on FHIR ecosystem.
 
-# APP Launch Flow
+After completeing this tutorial you know know how to:
+
+* Create a basic SMART on FHIR app.
+* Self register an app with Cerner.
+* Run an app in Cerners SMART on FHIR sandbox.
+
+# App Launch Flow
 
 ![alt text](ehr_launch_seq.png "High Level EHR APP Launch Flow")
 
