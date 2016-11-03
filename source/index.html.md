@@ -23,8 +23,10 @@ Fork this tutorial from [smart-tutorial](https://github.com/parthivbhagat/smart-
 
 Clone a copy down to your local machine.
 
+> git command to clone your repo:
+
 ```bash
-$ git clone https://github.com/<YOUR-USERNAME>/smart-tutorial
+$ git clone https://github.com/<your-username>/smart-tutorial
 ```
 
 Example-smart-app, located in the source folder, includes several notable files:
@@ -44,7 +46,9 @@ SMART JS client uses the open-source library [fhir.js](https://github.com/smart-
 
 Additional documentation on fhir-client.js can be found [here](http://docs.smarthealthit.org/clients/javascript/).
 
+<aside class="notice">
 This tutorial is designed to have a minimal footprint so we made the decision to directly include the minified version of fhir-client.js for simplicity. For your production applications we'd recommend pulling in fhir-client.js using npm or some other package manager to easily keep your application up to date.
+</aside>
 
 **launch.html**
 
@@ -61,7 +65,7 @@ The other content you see in the source folder is the site for this tutorial. We
 >The SMART app will be available at:
 
 ```
-https://<username>.github.io/smart-tutorial/example-smart-app/
+https://<your-username>.github.io/smart-tutorial/example-smart-app/
 ```
 
 For the purposes of this tutorial we will be hosting our SMART app through [GitHub Pages](https://help.github.com/articles/what-is-github-pages). GitHub Pages is a convenient way to host static or client rendered web sites.
@@ -75,6 +79,10 @@ Because this tutorial is built from Slate, we have a handy built in script to de
 ```bash
 $ ./deploy.sh
 ```
+
+<aside class="notice">
+GitHub Pages sites have a limit of 10 builds per hour, so if your page isn't updating, this could be the reason.
+</aside>
 
 # Registering SMART App
 Once we have the SMART App created per the Project Setup step, get the application hosted. Your application is now ready to be registered with Cerner. Go to the link [Developer Portal APP Registration](https://code.cerner.com/developer/smart-on-fhir/register), sign into your Cerner Care Account and fill up following details:
