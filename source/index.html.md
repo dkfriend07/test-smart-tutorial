@@ -17,10 +17,6 @@ After completing this tutorial you know know how to:
 * Self register an app with Cerner.
 * Run an app in Cerners SMART on FHIR sandbox.
 
-# App Launch Flow
-
-![alt text](ehr_launch_seq.png "High Level EHR APP Launch Flow")
-
 # Project Setup
 
 Fork this tutorial from [smart-tutorial](https://github.com/parthivbhagat/smart-tutorial) using githubs ui.
@@ -52,11 +48,33 @@ This tutorial is designed to have a minimal footprint so we made the decision to
 
 **launch.html**
 
-This html file is used to authorize the App with FHIR server for scopes the App is trying to use
+Launch.html is the first page Cerner SMART server will redirect to when the SMART app is launched from the EHR. Its purpose is to authorize the app with the appropriate FHIR server for the required scopes.
 
 **index.html**
 
-This html file is primarily used to display resources on front end
+Index.html well be re-directed to following a successful authorization. This file is the entry point to the application.
+
+The other content you see in the source folder is the site for this tutorial. We use [Slate](https://github.com/lord/slate).
+
+#GitHub Pages
+
+>The SMART app will be available at:
+
+```
+https://<username>.github.io/smart-tutorial/example-smart-app/
+```
+
+For the purposes of this tutorial we will be hosting our SMART app through [GitHub Pages](https://help.github.com/articles/what-is-github-pages). GitHub Pages is a convenient way to host static or client rendered web sites.
+
+Setting up GitHub pages is easy, so easy in fact that it's already done for you. GitHub pages works by hosting content from a gh-pages branch. Since you forked the tutorial the gh-pages branch is already created.
+
+Because this tutorial is built from Slate, we have a handy built in script to deploy changes to the GitHub Pages branch.
+
+> To re-deploy the GitHub Pages site commit your changes and run:
+
+```bash
+$ ./deploy.sh
+```
 
 # Registering SMART App
 Once we have the SMART App created per the Project Setup step, get the application hosted. Your application is now ready to be registered with Cerner. Go to the link [Developer Portal APP Registration](https://code.cerner.com/developer/smart-on-fhir/register), sign into your Cerner Care Account and fill up following details:
@@ -76,6 +94,10 @@ Patient Scopes | Select Patient and Observation scopes
 and click Register. This will send request to Cerner FHIR group for them to create client id for the app authorization.
 
 After this you will receive an email stating what your Client ID and Launch URL is.
+
+# App Launch Flow
+
+![alt text](ehr_launch_seq.png "High Level EHR APP Launch Flow")
 
 # Request Authorization
 
