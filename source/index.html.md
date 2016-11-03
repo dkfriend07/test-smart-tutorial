@@ -23,20 +23,32 @@ After completing this tutorial you know know how to:
 
 # Project Setup
 
-Clone this tutorial from [smart-tutorial](https://github.com/parthivbhagat/smart-tutorial).
+Fork this tutorial from [smart-tutorial](https://github.com/parthivbhagat/smart-tutorial) using githubs ui.
 
-The example-smart-app contained in the source folder includes following important files:
+Clone a copy down to your local machine.
 
-**fhir-client.js**
+```bash
+$ git clone https://github.com/<YOUR-USERNAME>/smart-tutorial
+```
 
-This is the open source FHIR javascript library which would help us with OAUTH2 transactions.
+Example-smart-app, located in the source folder, includes several notable files:
 
-The SMART on FHIR JavaScript client library helps you build browser-based SMART apps that interact with a FHIR REST API server. It can help your app get authorization tokens, provide information about the user and patient record in context, and issue API calls to fetch clinical data. This tutorial will lead you through the basics of building a SMART app using the JavaScript client.
+**fhir-client.min.js**
 
-The SMART JS client uses the open-source fhir.js for interfacing with SMART API servers. Upon successfully initializing and negotiating the SMART authorization sequence, the client will expose one or two instances of the fhir.js client as applicable via the following handles :
+Located in the lib folder, this is a minified version of [fhir-client.js](https://github.com/smart-on-fhir/client-js) which is an open source library designed to assist with FHIR's OAUTH2 and resource transactions.
 
-* *smart.api* Non-context aware API for executing operations on all authorized resources
-* *smart.patient.api* Context aware API which automatically applies its operations to the patient in context
+It provides apis to get authorization tokens, provide information about the user and patient record in context, and issue API calls to fetch FHIR resources. This tutorial will lead you through the basics of building a SMART app using the JavaScript client.
+
+SMART JS client uses the open-source library [fhir.js](https://github.com/smart-on-fhir/fhir.js) to interface with SMART API servers. Upon successful initialization and negotiation of the SMART authorization sequence, the client will expose instances of the fhir.js client via the following handles :
+
+* *smart.api*
+  * Non-context aware API for executing operations on all authorized resources.
+* *smart.patient.api*
+  * Context aware API which automatically applies its operations to the patient in context. Only exposed when a patient is in context.
+
+Additional documentation on fhir-client.js can be found [here](http://docs.smarthealthit.org/clients/javascript/).
+
+This tutorial is designed to have a minimal footprint so we made the decision to directly include the minified version of fhir-client.js for simplicity. For your production applications we'd recommend pulling in fhir-client.js using npm or some other package manager to easily keep your application up to date.
 
 **launch.html**
 
