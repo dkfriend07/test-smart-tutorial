@@ -72,7 +72,7 @@ For the purposes of this tutorial we will be hosting our SMART app through [GitH
 
 Setting up GitHub pages is easy, so easy in fact that it's already done for you. GitHub pages works by hosting content from a gh-pages branch. Since you forked the tutorial the gh-pages branch is already created.
 
-Because this tutorial is built from Slate, we have a handy built in script to deploy changes to the GitHub Pages branch.
+Because this tutorial is built from Slate, we have a handy built in script to deploy changes to the GitHub Pages branch. Go ahead run ./deploy.sh to deploy your SMART app.
 
 > To re-deploy the GitHub Pages site commit your changes and run:
 
@@ -84,26 +84,28 @@ $ ./deploy.sh
 GitHub Pages sites have a limit of 10 builds per hour, so if your page isn't updating, this could be the reason.
 </aside>
 
-# Registering SMART App
-Once we have the SMART App created per the Project Setup step, get the application hosted. Your application is now ready to be registered with Cerner. Go to the link [Developer Portal APP Registration](https://code.cerner.com/developer/smart-on-fhir/register), sign into your Cerner Care Account and fill up following details:
+# Registration
+Now that we have a deployed SMART app, lets register it to access Cerner's FHIR resources. We have created a self registration console to allow any developer to be able run a SMART app against our development environment. Navigate to our [code console](https://code.cerner.com/developer/smart-on-fhir/smart_apps), if you don't have a Cerner Care Account, go ahead and sign up for one (it's free!). Once logged into the console, click on the "+ Register New App" button in the top right toolbar and fill in the following details:
 
 Field | Description
 --------- | -----------
-App Name | Any name for your APP you want to give
-SMART Launch URI | URL to the launch.html file . Like https://username.github.io/smart-starter-app/launch.html
-Redirect URI | Just put your base app url. Like https://username.github.io/smart-starter-app/index.html
-App Type | Select Patient facing App.
-FHIR Spec | Select DSTU2
-Authorized | Select yes. Authorized App will go through secured OAuth2 login.
-Standard Scopes | These are standard scopes that are required to launch SMART App.
-User Scopes | Don't select anything here
-Patient Scopes | Select Patient and Observation scopes
+App Name | "My amazing SMART app". Any name will do.
+SMART Launch URI | https://<your-username>.github.io/smart-tutorial/example-smart-app/launch.html
+Redirect URI | https://<your-username>.github.io/smart-tutorial/example-smart-app/index.html
+App Type | Provider
+FHIR Spec | DSTU2
+Authorized | Yes. Authorized App will go through secured OAuth2 login.
+Standard Scopes | These scopes are required to launch the SMART app.
+User Scopes | None
+Patient Scopes | Select the Patient and Observation scopes
 
-and click Register. This will send request to Cerner FHIR group for them to create client id for the app authorization.
+Click "Register" to complete the process. This will create add the app to your account and create a client id for app authorization.
 
-After this you will receive an email stating what your Client ID and Launch URL is.
+The new client-id will be displayed in a banner at the top of the page and can be viewed at any time by clicking on the application icon to view more details.
 
 # App Launch Flow
+
+We have now created our own SMART app and registered that app with Cerner to access the FHIR resources. Before we continue on with the next steps, lets take a moment to talk about what is going to happen next.
 
 ![alt text](ehr_launch_seq.png "High Level EHR APP Launch Flow")
 
