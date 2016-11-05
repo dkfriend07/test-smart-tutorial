@@ -105,7 +105,13 @@ The new client-id will be displayed in a banner at the top of the page and can b
 
 # App Launch Flow
 
-We have now created our own SMART app and registered that app with Cerner to access the FHIR resources. Before we continue on with the next steps, lets take a moment to talk about what is going to happen next.
+We have now created our own SMART app and registered that app with Cerner to access the FHIR resources. Before we continue on with the next steps, lets take a moment to talk about the flow of a SMART app launch.
+
+The SMART app launch flow beings with the EHR. Through some method a user has indicated that they wish to launch a smart application. The EHR redirects to the SMART ```Launch URI``` that was registered above.
+
+In this example ```Launch URI``` is launch.html. launch.html redirects to the FHIR authorization server which in-turn redirects to the ```Redirect URI```, index.html, upon a successful authentication.
+
+Post authentication index.html exchanges the returned authorization token for an access token and is then able to request resources from the FHIR server. Lets take a deeper look at launch.html and get it ready for authentication.
 
 ![alt text](ehr_launch_seq.png "High Level EHR APP Launch Flow")
 
