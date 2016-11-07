@@ -179,9 +179,15 @@ This tutorial is designed to have a minimal footprint so we made the decision to
 <h1 id="github-pages">GitHub Pages</h1>
 
 <blockquote>
-<p>The SMART app will be available at:</p>
+<p>index.html</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https://&lt;your-username&gt;.github.io/smart-tutorial/example-smart-app/
+<pre class="highlight html"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">'X-UA-Compatible'</span> <span class="na">content=</span><span class="s">'IE=edge'</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">'Content-Type'</span> <span class="na">content=</span><span class="s">'text/html; charset=utf-8'</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;&lt;your-username&gt;</span>Example-SMART-App<span class="nt">&lt;/title&gt;</span>
+    ...
 </code></pre>
 
 <blockquote>
@@ -190,11 +196,25 @@ This tutorial is designed to have a minimal footprint so we made the decision to
 <pre class="highlight shell"><code><span class="gp">$ </span>./deploy.sh
 </code></pre>
 
+<blockquote>
+<p>The SMART app will be available at:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https://&lt;your-username&gt;.github.io/smart-tutorial/example-smart-app/
+</code></pre>
+
+<blockquote>
+<p>Health check</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https://&lt;your-username&gt;.github.io/smart-tutorial/example-smart-app/health
+</code></pre>
+
 <p>For the purposes of this tutorial we will be hosting our SMART app through <a href="https://help.github.com/articles/what-is-github-pages">GitHub Pages</a>. GitHub Pages is a convenient way to host static or client rendered web sites.</p>
 
-<p>Setting up GitHub pages is easy, so easy in fact that it&rsquo;s already done for you. GitHub pages works by hosting content from a gh-pages branch. Since you forked the tutorial the gh-pages branch is already created, however Github won&rsquo;t publish your site until you make a change to the gh-pages branch.</p>
+<p>Setting up GitHub pages is easy, so easy in fact that it&rsquo;s already done for you. GitHub pages works by hosting content from a gh-pages branch. Since you forked the tutorial the gh-pages branch is already created, however GitHub won&rsquo;t publish your site until you make a change to the gh-pages branch, so lets make a change. Modify the index.html page to include your GitHub user-name in the title commit and push the change to master.</p>
 
-<p>Because this tutorial is built from Slate, we have a handy built in script to deploy changes to the GitHub Pages branch. Go ahead run ./deploy.sh to deploy your SMART app.</p>
+<p>Now that we have a change, lets redeploy the App. Because this tutorial is built from Slate, we have a handy built in script to deploy changes to the GitHub Pages branch. Go ahead run ./deploy.sh to deploy your SMART app.</p>
+
+<p>Once the app has been redeployed go to <code class="prettyprint">https://&lt;your-username&gt;.github.io/smart-tutorial/example-smart-app/health</code> to ensure your app is available.</p>
 
 <aside class="notice">
 GitHub Pages sites have a limit of 10 builds per hour, so if your page isn&rsquo;t updating, this could be the reason.
@@ -274,16 +294,14 @@ GitHub Pages sites have a limit of 10 builds per hour, so if your page isn&rsquo
   <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=utf-8"</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;title&gt;</span>SMART on FHIR Starter App<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Example-SMART-App<span class="nt">&lt;/title&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   Loading...
   <span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'./src/js/starter_app.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'./lib/fhir-client.min.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
     <span class="nt">&lt;script&gt;</span>
       <span class="nx">FHIR</span><span class="p">.</span><span class="nx">oauth2</span><span class="p">.</span><span class="nx">authorize</span><span class="p">({</span>
-        <span class="s1">'client_id'</span><span class="p">:</span> <span class="s1">'&lt;Replace me with your client id&gt;'</span><span class="p">,</span>
+        <span class="s1">'client_id'</span><span class="p">:</span> <span class="s1">'df7c5a17-52dd-4c88-8a32-cdfb557ba758'</span><span class="p">,</span>
         <span class="s1">'scope'</span><span class="p">:</span>  <span class="s1">'patient/Patient.read patient/Observation.read launch online_access openid profile'</span>
       <span class="p">});</span>
     <span class="nt">&lt;/script&gt;</span>
@@ -363,7 +381,7 @@ The oauth2 client id is an identifier, not a secret as such it does not need to 
 <p>index.html</p>
 </blockquote>
 <pre class="highlight html"><code>...
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'./src/js/starter_app.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'./src/js/example-smart-app.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'./lib/fhir-client.min.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script&gt;</span>
@@ -383,7 +401,7 @@ The oauth2 client id is an identifier, not a secret as such it does not need to 
 </code></pre>
 
 <blockquote>
-<p>starter_app.js - extractData</p>
+<p>example-smart-app.js - extractData</p>
 </blockquote>
 <pre class="highlight javascript"><code><span class="p">...</span>
 <span class="nb">window</span><span class="p">.</span><span class="nx">extractData</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -397,14 +415,14 @@ The oauth2 client id is an identifier, not a secret as such it does not need to 
 
 <p>Now that the app has successfully been authenticated, it&rsquo;s time to call a FHIR resource, but first we need to obtain an oauth2 access token. We have an authorization code that was passed as a query param to the redirect URI (index.html) by the authorization server. The authorization code is exchanged for a access token through post to the authorization server. Again fhir-client.js makes this easy for us.</p>
 
-<p>The &ldquo;index.html&rdquo; file includes a script which calls into the <code class="prettyprint">extractData</code> function in starter_app.js.</p>
+<p>The &ldquo;index.html&rdquo; file includes a script which calls into the <code class="prettyprint">extractData</code> function in example-smart-app.js.</p>
 
 <p><code class="prettyprint">extractData</code> uses the <code class="prettyprint">FHIR.oauth2.ready()</code> function to exchange the authorization code for the access token and store it in session storage for later use.</p>
 
 <h1 id="access-fhir-resource">Access FHIR Resource</h1>
 
 <blockquote>
-<p>starter_app.js - onReady</p>
+<p>example-smart-app.js - onReady</p>
 </blockquote>
 <pre class="highlight javascript"><code><span class="p">...</span>
 <span class="kd">function</span> <span class="nx">onReady</span><span class="p">(</span><span class="nx">smart</span><span class="p">)</span>  <span class="p">{</span>
@@ -572,7 +590,7 @@ The oauth2 client id is an identifier, not a secret as such it does not need to 
 </code></pre>
 
 <blockquote>
-<p>starter_app.js - drawVisualization</p>
+<p>example-smart-app.js - drawVisualization</p>
 </blockquote>
 <pre class="highlight javascript"><code><span class="p">...</span>
 <span class="nb">window</span><span class="p">.</span><span class="nx">drawVisualization</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span>
