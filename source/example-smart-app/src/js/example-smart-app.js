@@ -1,18 +1,18 @@
 (function(window){
   window.extractData = function() {
-    var ret = $.Deferred(); 
-  
+    var ret = $.Deferred();
+
     function onError() {
       console.log('Loading error', arguments);
       ret.reject();
-    }     
+    }
 
     function onReady(smart)  {
-      if (smart.hasOwnProperty('patient')) { 
+      if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
         var pt = patient.read();
         var obv = smart.patient.api.fetchAll({
-                      type: 'Observation', 
+                      type: 'Observation',
                       query: {
                         code: {
                           $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
@@ -21,14 +21,14 @@
                               }
                              }
                     });
-        
+
         $.when(pt, obv).fail(onError);
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
-          var dob = new Date(patient.birthDate);     
-          var day = dob.getDate(); 
+          var dob = new Date(patient.birthDate);
+          var day = dob.getDate();
           var monthIndex = dob.getMonth() + 1;
           var year = dob.getFullYear();
 
@@ -47,7 +47,7 @@
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
 
-          var p = defaultPatient();          
+          var p = defaultPatient();
           p.birthdate = dobStr;
           p.gender = gender;
           p.fname = fname;
@@ -57,7 +57,7 @@
           if(typeof height[0] != 'undefined' && typeof height[0].valueQuantity.value != 'undefined' && typeof height[0].valueQuantity.unit != 'undefined') {
             p.height = height[0].valueQuantity.value + ' ' + height[0].valueQuantity.unit;
           }
-          
+
           if(typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
           }
@@ -65,7 +65,7 @@
           if(typeof diastolicbp != 'undefined') {
             p.diastolicbp = diastolicbp;
           }
-          
+
           if(typeof hdl[0] != 'undefined' && typeof hdl[0].valueQuantity.value != 'undefined' && typeof hdl[0].valueQuantity.unit != 'undefined') {
             p.hdl = hdl[0].valueQuantity.value + ' ' + hdl[0].valueQuantity.unit;
           }
@@ -75,11 +75,11 @@
           }
           ret.resolve(p);
         });
-      } else { 
+      } else {
         onError();
-      }      
+      }
     }
-    
+
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
 
@@ -108,13 +108,13 @@
           return coding.code == typeOfPressure;
         });
       });
-      if (BP) { 
+      if (BP) {
         observation.valueQuantity = BP.valueQuantity;
         formattedBPObservations.push(observation);
       }
     });
-           
-    if (typeof formattedBPObservations[0].valueQuantity.value != 'undefined' && formattedBPObservations[0].valueQuantity.unit != 'undefined') {
+
+    if (typeof formattedBPObservations[0] != 'undefined' && typeof formattedBPObservations[0].valueQuantity.value != 'undefined' && formattedBPObservations[0].valueQuantity.unit != 'undefined') {
       return formattedBPObservations[0].valueQuantity.value + ' ' + formattedBPObservations[0].valueQuantity.unit ;
     }
     else {
@@ -141,16 +141,16 @@
     else {
       return undefined;
     }
-    
+
   }
 
-  window.drawVisualization = function(p) { 
+  window.drawVisualization = function(p) {
     $('#holder').show();
     $('#loading').hide();
     $('#fname').html(p.fname);
     $('#lname').html(p.lname);
     $('#gender').html(p.gender);
-    $('#birthdate').html(p.birthdate);  
+    $('#birthdate').html(p.birthdate);
     $('#age').html(p.age);
     $('#height').html(p.height);
     $('#systolicbp').html(p.systolicbp);
