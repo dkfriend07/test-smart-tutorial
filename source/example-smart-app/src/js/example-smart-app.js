@@ -54,6 +54,7 @@
           p.lname = lname;
           p.age = parseInt(calculateAge(dob));
 
+          console.log("height")
           if(typeof height[0] != 'undefined' && typeof height[0].valueQuantity.value != 'undefined' && typeof height[0].valueQuantity.unit != 'undefined') {
             p.height = height[0].valueQuantity.value + ' ' + height[0].valueQuantity.unit;
           }
@@ -66,10 +67,12 @@
             p.diastolicbp = diastolicbp;
           }
 
+          console.log("hdl")
           if(typeof hdl[0] != 'undefined' && typeof hdl[0].valueQuantity.value != 'undefined' && typeof hdl[0].valueQuantity.unit != 'undefined') {
             p.hdl = hdl[0].valueQuantity.value + ' ' + hdl[0].valueQuantity.unit;
           }
 
+          console.log("ldl")
           if(typeof ldl[0] != 'undefined' && typeof ldl[0].valueQuantity.value != 'undefined' && typeof ldl[0].valueQuantity.unit != 'undefined') {
             p.ldl = ldl[0].valueQuantity.value + ' ' + ldl[0].valueQuantity.unit;
           }
@@ -113,7 +116,7 @@
         formattedBPObservations.push(observation);
       }
     });
-
+    console.log("Get Blood Pressure")
     if (typeof formattedBPObservations[0] != 'undefined' && typeof formattedBPObservations[0].valueQuantity.value != 'undefined' && formattedBPObservations[0].valueQuantity.unit != 'undefined') {
       return formattedBPObservations[0].valueQuantity.value + ' ' + formattedBPObservations[0].valueQuantity.unit ;
     }
