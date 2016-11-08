@@ -108,12 +108,12 @@ Now that we have a deployed SMART app, lets register it to access Cerner's FHIR 
 
 Field | Description
 --------- | -----------
-App Name | "My amazing SMART app". Any name will do.
+App Name | ```My amazing SMART app``` Any name will do.
 SMART Launch URI | ```https://<your-username>.github.io/smart-tutorial/example-smart-app/launch.html```
-Redirect URI | ```https://<your-username>.github.io/smart-tutorial/example-smart-app/index.html```
-App Type | Provider
-FHIR Spec | DSTU2 The latest spec version supported by Cerner.
-Authorized | Yes. Authorized App will go through secured OAuth2 login.
+Redirect URI | ```https://<your-username>.github.io/smart-tutorial/example-smart-app```
+App Type | ```Provider```
+FHIR Spec | ```DSTU2``` The latest spec version supported by Cerner.
+Authorized | ```Yes``` Authorized App will go through secured OAuth2 login.
 Standard Scopes | These scopes are required to launch the SMART app.
 User Scopes | None
 Patient Scopes | Select the Patient and Observation scopes
@@ -130,7 +130,7 @@ The SMART app launch flow beings with the EHR. Through some method a user has in
 
 In this example ```Launch URI``` is launch.html. launch.html redirects to the FHIR authorization server which in-turn redirects to the ```Redirect URI```, index.html, upon a successful authentication.
 
-Post authentication index.html exchanges the returned authorization token for an access token and is then able to request resources from the FHIR server. Lets take a deeper look at launch.html and get it ready for authentication. For more information about the SMART app launching vist the [SMART Health IT site](http://docs.smarthealthit.org/authorization/)
+Post authentication index.html exchanges the returned authorization token for an access token and is then able to request resources from the FHIR server. Lets take a deeper look at launch.html and get it ready for authentication. For more information about the SMART app launching vist the [SMART Health IT site](http://docs.smarthealthit.org/authorization/).
 
 ![alt text](ehr_launch_seq.png "High Level EHR APP Launch Flow")
 
@@ -151,7 +151,7 @@ Post authentication index.html exchanges the returned authorization token for an
     <script src='./lib/fhir-client.min.js'></script>
     <script>
       FHIR.oauth2.authorize({
-        'client_id': 'df7c5a17-52dd-4c88-8a32-cdfb557ba758',
+        'client_id': '<enter your client id here>',
         'scope':  'patient/Patient.read patient/Observation.read launch online_access openid profile'
       });
     </script>
