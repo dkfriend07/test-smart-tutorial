@@ -18,12 +18,12 @@ After completing this tutorial you know know how to:
 * Run an app in Cerner's SMART on FHIR sandbox.
 
 # Prerequisites
-  * A public [GitHub](http://www.github.com) account
+  * A public <a href="http://www.github.com" target="_blank">GitHub</a> account
   * Ruby and bundler (recommended for deployment but optional)
 
 # Project Setup
 
-Fork this tutorial from [smart-tutorial](https://github.com/parthivbhagat/smart-tutorial) using github's ui.
+Fork this tutorial from <a href="https://github.com/parthivbhagat/smart-tutorial" target="_blank">smart-tutorial</a> using github's ui.
 
 Clone a copy down to your local machine.
 
@@ -37,11 +37,11 @@ Example-smart-app, located in the source folder, includes several notable files:
 
 **fhir-client.min.js**
 
-Located in the lib folder, this is a minified version of [fhir-client.js](https://github.com/smart-on-fhir/client-js) which is an open source library designed to assist with FHIR's OAUTH2 and resource transactions.
+Located in the lib folder, this is a minified version of <a href="https://github.com/smart-on-fhir/client-js" target="_blank">fhir-client.js</a> which is an open source library designed to assist with FHIR's OAUTH2 and resource transactions.
 
 It provides apis to get authorization tokens, provide information about the user and patient record in context, and issue API calls to fetch FHIR resources. This tutorial will lead you through the basics of building a SMART app using the JavaScript client.
 
-Additional documentation on fhir-client.js can be found [here](http://docs.smarthealthit.org/clients/javascript/).
+Additional documentation on fhir-client.js can be found <a href="http://docs.smarthealthit.org/clients/javascript/" target="_blank">here</a>.
 
 <aside class="notice">
 This tutorial is designed to have a minimal footprint so we made the decision to directly include the minified version of fhir-client.js for simplicity. For your production applications we'd recommend pulling in fhir-client.js using npm or some other package manager to easily keep your application up to date.
@@ -55,7 +55,7 @@ Launch.html is the first page Cerner SMART server will redirect to when the SMAR
 
 Index.html will be re-directed to following a successful authorization. This file is the entry point to the application.
 
-The other content you see in the source folder is the site for this tutorial. We used [Slate](https://github.com/lord/slate).
+The other content you see in the source folder is the site for this tutorial. We used <a href="https://github.com/lord/slate" target="_blank">Slate</a>.
 
 #GitHub Pages
 
@@ -88,7 +88,7 @@ $ ./deploy.sh
 >The SMART app will be available at:
 
 ```
-https://<your-username>.github.io/smart-tutorial/example-smart-app
+https://<your-username>.github.io/smart-tutorial/example-smart-app/
 ```
 >Health check
 
@@ -96,7 +96,7 @@ https://<your-username>.github.io/smart-tutorial/example-smart-app
 https://<your-username>.github.io/smart-tutorial/example-smart-app/health
 ```
 
-For the purposes of this tutorial we will be hosting our SMART app through [GitHub Pages](https://help.github.com/articles/what-is-github-pages). GitHub Pages is a convenient way to host static or client rendered web sites.
+For the purposes of this tutorial we will be hosting our SMART app through <a href="https://help.github.com/articles/what-is-github-pages" target="_blank">GitHub Pages</a>. GitHub Pages is a convenient way to host static or client rendered web sites.
 
 Setting up GitHub pages is easy, so easy in fact that it's already done for you. GitHub pages works by hosting content from a gh-pages branch. Since you forked the tutorial the gh-pages branch is already created, however GitHub won't publish your site until you make a change to the gh-pages branch, so let's make a change. Modify the index.html page to include your GitHub user-name in the title, commit, and push the change to master.
 
@@ -109,13 +109,13 @@ GitHub Pages sites have a limit of 10 builds per hour, so if your page isn't upd
 </aside>
 
 # Registration
-Now that we have a deployed SMART app, let's register it to access Cerner's FHIR resources. We have created a self registration console to allow any developer to be able run a SMART app against our development environment. Navigate to our [code console](https://code.cerner.com/developer/smart-on-fhir/smart_apps), if you don't have a Cerner Care Account, go ahead and sign up for one (it's free!). Once logged into the console, click on the "+ Register New App" button in the top right toolbar and fill in the following details:
+Now that we have a deployed SMART app, let's register it to access Cerner's FHIR resources. We have created a self registration console to allow any developer to be able run a SMART app against our development environment. Navigate to our <a href="https://code.cerner.com/developer/smart-on-fhir/smart_apps" target="_blank">code console</a>, if you don't have a Cerner Care Account, go ahead and sign up for one (it's free!). Once logged into the console, click on the "+ Register New App" button in the top right toolbar and fill in the following details:
 
 Field | Description
 --------- | -----------
 App Name | ```My amazing SMART app``` Any name will do.
 SMART Launch URI | ```https://<your-username>.github.io/smart-tutorial/example-smart-app/launch.html```
-Redirect URI | ```https://<your-username>.github.io/smart-tutorial/example-smart-app```
+Redirect URI | ```https://<your-username>.github.io/smart-tutorial/example-smart-app/```
 App Type | ```Provider```
 FHIR Spec | ```dstu2_provider``` The latest spec version supported by Cerner.
 Authorized | ```Yes``` Authorized App will go through secured OAuth2 login.
@@ -135,7 +135,7 @@ The SMART app launch flow begins with the EHR. Through some method a user has in
 
 In this example ```Launch URI``` is launch.html. launch.html redirects to the FHIR authorization server which in-turn redirects to the ```Redirect URI```, index.html, upon a successful authentication.
 
-Post authentication, index.html exchanges the returned authorization token for an access token and is then able to request resources from the FHIR server. Let's take a deeper look at launch.html and get it ready for authentication. For more information about the SMART app launching vist the [SMART Health IT site](http://docs.smarthealthit.org/authorization/)
+Post authentication, index.html exchanges the returned authorization token for an access token and is then able to request resources from the FHIR server. Let's take a deeper look at launch.html and get it ready for authentication. For more information about the SMART app launching vist the <a href="http://docs.smarthealthit.org/authorization/" target="_blank">SMART Health IT site</a>.
 
 ![alt text](ehr_launch_seq.png "High Level EHR APP Launch Flow")
 
@@ -168,7 +168,7 @@ Post authentication, index.html exchanges the returned authorization token for a
 
 The responsibility of launch.html is to redirect to the appropriate FHIR authorization server. As you can see in the code, fhir-client makes our job pretty easy. All we have to do is call ```FHIR.oauth2.authorize``` and supply the client_id generated by the code console during registration and the scopes we registered.
 
-The client_id is found in the app details page that can be accessed by clicking on the application icon in the [code console](https://code.cerner.com/developer/smart-on-fhir/smart_apps). Copy the client_id into the authorize call, commit the changes back to your repo and redeploy your site.
+The client_id is found in the app details page that can be accessed by clicking on the application icon in the <a href="https://code.cerner.com/developer/smart-on-fhir/smart_apps" target="_blank">code console</a>. Copy the client_id into the authorize call, commit the changes back to your repo and redeploy your site.
 
 For the purposed of this tutorial you don't need to modify the scopes, but if you want to add any more scopes, remember to update this list.
 
@@ -197,7 +197,7 @@ Through an EHR launch, launch.html will be supplied with two query params ```iss
 ```iss``` is the EHR's FHIR end point and ```launch``` is an identifier that will be passed along to the authentication server.
 
 ```FHIR.oauth2.authorize``` queries the FHIR endpoint to find the URI for authorization.
-It then simply redirects to that endpoint, filling out the required api which includes the supplied client id, scopes and the launch parameter passed in from the ehr. (There are a few more params that can be read about [here](http://docs.smarthealthit.org/authorization/)). Additionally the function generates an appropriate ```state``` parameter that will then be checked after redirecting to the index page.
+It then simply redirects to that endpoint, filling out the required api which includes the supplied client id, scopes and the launch parameter passed in from the ehr. (There are a few more params that can be read about <a href='http://docs.smarthealthit.org/authorization/)'>here</a>). Additionally the function generates an appropriate ```state``` parameter that will then be checked after redirecting to the index page.
 
 Following the ```FHIR.oauth2.authorize```, the app will redirect to the authentication server, which, on a successful authentication, will redirect back to the ```Redirect URI```, in this case, index.html
 
@@ -338,7 +338,7 @@ The fhir-client.js library defines several useful api's we can use to retrieve t
   * This will return the context for the patient the app was launched for.
 * ```smart.patient.api```
   * ```fetchAll()```
-    * This will use the [fhir.js](https://github.com/FHIR/fhir.js) api to retrieve a complete set of resources for the patient in context.
+    * This will use the <a https://github.com/FHIR/fhir.js)'>fhir.js</a>) api to retrieve a complete set of resources for the patient in context.
 
 Both of these functions will return a jQuery deferred object which we unpack on success.
 
@@ -346,7 +346,7 @@ Unpacking is fairly straight forward. We're taking the response from the patient
 
 The last function from fhir-client.js is the ```byCodes``` utility function that returns a function to search a given resource for specific codes returned from that response.
 
-The fhir-client.js library defines several more api's that will come in handy while developing smart app. Read about them [here](http://docs.smarthealthit.org/clients/javascript/).
+The fhir-client.js library defines several more api's that will come in handy while developing smart app. Read about them <a http://docs.smarthealthit.org/clients/javascript/)'>here</a>.
 
 # Displaying the Resource
 
@@ -455,6 +455,6 @@ We've created a very basic application that meets the base requirements of being
 * Try calling another resource.
 * Write unit tests for the application.
 * Pull in fhir-client.js through a package manager like webpack.
-* Style the site using Cerner's open source UX library [Terra](https://github.com/cerner/terra-ui.com).
+* Localize and Internationalize your application.
 
 We're excited to see what you'll build next!
