@@ -170,7 +170,7 @@ The responsibility of launch.html is to redirect to the appropriate FHIR authori
 
 The client_id is found in the app details page that can be accessed by clicking on the application icon in the <a href="https://code.cerner.com/developer/smart-on-fhir/smart_apps" target="_blank">code console</a>. Copy the client_id into the authorize call, commit the changes back to your repo and redeploy your site.
 
-For the purposed of this tutorial you don't need to modify the scopes, but if you want to add any more scopes, remember to update this list.
+For the purposed of this tutorial you don't need to modify the scopes. This list should match the scopes that you registered the application with.
 
 Below is some additional information about the scopes we've selected for our app.
 
