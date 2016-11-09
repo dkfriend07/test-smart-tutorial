@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>SMART on FHIR Starter APP</title>
+    <title>SMART on FHIR app tutorial</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -125,6 +125,13 @@
 <li>Run an app in Cerner&rsquo;s SMART on FHIR sandbox.</li>
 </ul>
 
+<h1 id="prerequisites">Prerequisites</h1>
+
+<ul>
+<li>A public <a href="http://www.github.com">GitHub</a> account</li>
+<li>Ruby and bundler (recommended for deployment but optional)</li>
+</ul>
+
 <h1 id="project-setup">Project Setup</h1>
 
 <p>Fork this tutorial from <a href="https://github.com/parthivbhagat/smart-tutorial">smart-tutorial</a> using github&rsquo;s ui.</p>
@@ -144,21 +151,6 @@
 <p>Located in the lib folder, this is a minified version of <a href="https://github.com/smart-on-fhir/client-js">fhir-client.js</a> which is an open source library designed to assist with FHIR&rsquo;s OAUTH2 and resource transactions.</p>
 
 <p>It provides apis to get authorization tokens, provide information about the user and patient record in context, and issue API calls to fetch FHIR resources. This tutorial will lead you through the basics of building a SMART app using the JavaScript client.</p>
-
-<p>SMART JS client uses the open-source library <a href="https://github.com/smart-on-fhir/fhir.js">fhir.js</a> to interface with SMART API servers. Upon successful initialization and negotiation of the SMART authorization sequence, the client will expose instances of the fhir.js client via the following handles :</p>
-
-<ul>
-<li><em>smart.api</em>
-
-<ul>
-<li>Non-context aware API for executing operations on all authorized resources.</li>
-</ul></li>
-<li><em>smart.patient.api</em>
-
-<ul>
-<li>Context aware API which automatically applies its operations to the patient in context. Only exposed when a patient is in context.</li>
-</ul></li>
-</ul>
 
 <p>Additional documentation on fhir-client.js can be found <a href="http://docs.smarthealthit.org/clients/javascript/">here</a>.</p>
 
@@ -191,15 +183,23 @@ This tutorial is designed to have a minimal footprint so we made the decision to
 </code></pre>
 
 <blockquote>
+<p>Before the first deploy you must run bundle install</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>bundle install
+</code></pre>
+
+<blockquote>
 <p>To re-deploy the GitHub Pages site commit your changes and run:</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="gp">$ </span>./deploy.sh
 </code></pre>
 
 <blockquote>
+<p>Alternatively if ruby cannot be installed on your machine you can manually checkout the gh-pages branch and push changes to the example-smart-app folder.</p>
+
 <p>The SMART app will be available at:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https://&lt;your-username&gt;.github.io/smart-tutorial/example-smart-app/
+<pre class="highlight plaintext"><code>https://&lt;your-username&gt;.github.io/smart-tutorial/example-smart-app
 </code></pre>
 
 <blockquote>
@@ -212,7 +212,7 @@ This tutorial is designed to have a minimal footprint so we made the decision to
 
 <p>Setting up GitHub pages is easy, so easy in fact that it&rsquo;s already done for you. GitHub pages works by hosting content from a gh-pages branch. Since you forked the tutorial the gh-pages branch is already created, however GitHub won&rsquo;t publish your site until you make a change to the gh-pages branch, so let&rsquo;s make a change. Modify the index.html page to include your GitHub user-name in the title, commit, and push the change to master.</p>
 
-<p>Now that we have a change, let&rsquo;s redeploy the App. Because this tutorial is built from Slate, we have a handy built in script to deploy changes to the GitHub Pages branch. Go ahead run ./deploy.sh to deploy your SMART app.</p>
+<p>Now that we have a change, let&rsquo;s redeploy the App. Because this tutorial is built from Slate, we have a handy built in script to deploy changes to the GitHub Pages branch. First if you haven&rsquo;t already run <code class="prettyprint">bundle install</code>.  Go ahead run <code class="prettyprint">./deploy.sh</code> to deploy your SMART app.</p>
 
 <p>Once the app has been redeployed go to <code class="prettyprint">https://&lt;your-username&gt;.github.io/smart-tutorial/example-smart-app/health</code> to ensure your app is available.</p>
 
@@ -248,7 +248,7 @@ GitHub Pages sites have a limit of 10 builds per hour, so if your page isn&rsquo
 </tr>
 <tr>
 <td>FHIR Spec</td>
-<td><code class="prettyprint">DSTU2</code> The latest spec version supported by Cerner.</td>
+<td><code class="prettyprint">dstu2_provider</code> The latest spec version supported by Cerner.</td>
 </tr>
 <tr>
 <td>Authorized</td>
