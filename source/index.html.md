@@ -1,5 +1,5 @@
 ---
-title: SMART on FHIR Starter APP
+title: SMART on FHIR app tutorial
 
 language_tabs:
   - code
@@ -16,6 +16,10 @@ After completing this tutorial you know know how to:
 * Create a basic SMART on FHIR app.
 * Self register an app with Cerner.
 * Run an app in Cerner's SMART on FHIR sandbox.
+
+# Prerequisites
+  * A public [GitHub](http://www.github.com) account
+  * Ruby and bundler (recommended for deployment but optional)
 
 # Project Setup
 
@@ -36,13 +40,6 @@ Example-smart-app, located in the source folder, includes several notable files:
 Located in the lib folder, this is a minified version of [fhir-client.js](https://github.com/smart-on-fhir/client-js) which is an open source library designed to assist with FHIR's OAUTH2 and resource transactions.
 
 It provides apis to get authorization tokens, provide information about the user and patient record in context, and issue API calls to fetch FHIR resources. This tutorial will lead you through the basics of building a SMART app using the JavaScript client.
-
-SMART JS client uses the open-source library [fhir.js](https://github.com/smart-on-fhir/fhir.js) to interface with SMART API servers. Upon successful initialization and negotiation of the SMART authorization sequence, the client will expose instances of the fhir.js client via the following handles :
-
-* *smart.api*
-  * Non-context aware API for executing operations on all authorized resources.
-* *smart.patient.api*
-  * Context aware API which automatically applies its operations to the patient in context. Only exposed when a patient is in context.
 
 Additional documentation on fhir-client.js can be found [here](http://docs.smarthealthit.org/clients/javascript/).
 
@@ -74,16 +71,24 @@ The other content you see in the source folder is the site for this tutorial. We
     ...
 ```
 
+> Before the first deploy you must run bundle install
+
+```bash
+$ bundle install
+```
+
 > To re-deploy the GitHub Pages site commit your changes and run:
 
 ```bash
 $ ./deploy.sh
 ```
 
+> Alternatively if ruby cannot be installed on your machine you can manually checkout the gh-pages branch and push changes to the example-smart-app folder.
+
 >The SMART app will be available at:
 
 ```
-https://<your-username>.github.io/smart-tutorial/example-smart-app/
+https://<your-username>.github.io/smart-tutorial/example-smart-app
 ```
 >Health check
 
@@ -95,7 +100,7 @@ For the purposes of this tutorial we will be hosting our SMART app through [GitH
 
 Setting up GitHub pages is easy, so easy in fact that it's already done for you. GitHub pages works by hosting content from a gh-pages branch. Since you forked the tutorial the gh-pages branch is already created, however GitHub won't publish your site until you make a change to the gh-pages branch, so let's make a change. Modify the index.html page to include your GitHub user-name in the title, commit, and push the change to master.
 
-Now that we have a change, let's redeploy the App. Because this tutorial is built from Slate, we have a handy built in script to deploy changes to the GitHub Pages branch. Go ahead run ./deploy.sh to deploy your SMART app.
+Now that we have a change, let's redeploy the App. Because this tutorial is built from Slate, we have a handy built in script to deploy changes to the GitHub Pages branch. First if you haven't already run ```bundle install```.  Go ahead run ```./deploy.sh``` to deploy your SMART app.
 
 Once the app has been redeployed go to ```https://<your-username>.github.io/smart-tutorial/example-smart-app/health``` to ensure your app is available.
 
@@ -112,7 +117,7 @@ App Name | ```My amazing SMART app``` Any name will do.
 SMART Launch URI | ```https://<your-username>.github.io/smart-tutorial/example-smart-app/launch.html```
 Redirect URI | ```https://<your-username>.github.io/smart-tutorial/example-smart-app```
 App Type | ```Provider```
-FHIR Spec | ```DSTU2``` The latest spec version supported by Cerner.
+FHIR Spec | ```dstu2_provider``` The latest spec version supported by Cerner.
 Authorized | ```Yes``` Authorized App will go through secured OAuth2 login.
 Standard Scopes | These scopes are required to launch the SMART app.
 User Scopes | None
