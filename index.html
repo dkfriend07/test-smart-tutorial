@@ -117,7 +117,7 @@
 
 <p>This tutorial will walk you through creating an app in Cerner&rsquo;s SMART on FHIR ecosystem.</p>
 
-<p>After completing this tutorial you know know how to:</p>
+<p>After completing this tutorial you will know how to:</p>
 
 <ul>
 <li>Create a basic SMART on FHIR app.</li>
@@ -134,7 +134,7 @@
 
 <h1 id="project-setup">Project Setup</h1>
 
-<p>Fork this tutorial from <a href="https://github.com/parthivbhagat/smart-tutorial" target="_blank">smart-tutorial</a> using github&rsquo;s ui.</p>
+<p>Fork this tutorial from <a href="https://github.com/parthivbhagat/smart-tutorial" target="_blank">smart-tutorial</a>.</p>
 
 <p>Clone a copy down to your local machine.</p>
 
@@ -160,7 +160,7 @@ This tutorial is designed to have a minimal footprint so we made the decision to
 
 <p><strong>launch.html</strong></p>
 
-<p>Launch.html is the first page Cerner SMART server will redirect to when the SMART app is launched from the EHR. Its purpose is to authorize the app with the appropriate FHIR server for the required scopes.</p>
+<p>Launch.html is the first page the Cerner SMART server will redirect to when the SMART app is launched from the EHR. Its purpose is to authorize the app with the appropriate FHIR server for the required scopes.</p>
 
 <p><strong>index.html</strong></p>
 
@@ -210,9 +210,9 @@ This tutorial is designed to have a minimal footprint so we made the decision to
 
 <p>For the purposes of this tutorial we will be hosting our SMART app through <a href="https://help.github.com/articles/what-is-github-pages" target="_blank">GitHub Pages</a>. GitHub Pages is a convenient way to host static or client rendered web sites.</p>
 
-<p>Setting up GitHub pages is easy, so easy in fact that it&rsquo;s already done for you. GitHub pages works by hosting content from a gh-pages branch. Since you forked the tutorial the gh-pages branch is already created, however GitHub won&rsquo;t publish your site until you make a change to the gh-pages branch, so let&rsquo;s make a change. Modify the index.html page to include your GitHub user-name in the title, commit, and push the change to master.</p>
+<p>Setting up GitHub pages is easy, so easy in fact that it&rsquo;s already done for you. GitHub pages works by hosting content from a gh-pages branch. Since you forked the tutorial, the gh-pages branch has already been created, however GitHub won&rsquo;t publish your site until you make a change to the gh-pages branch, so let&rsquo;s make a change. Modify the index.html page to include your GitHub user-name in the title, commit, and push the change to master.</p>
 
-<p>Now that we have a change, let&rsquo;s redeploy the App. Because this tutorial is built from Slate, we have a handy built in script to deploy changes to the GitHub Pages branch. First if you haven&rsquo;t already run <code class="prettyprint">bundle install</code>.  Go ahead run <code class="prettyprint">./deploy.sh</code> to deploy your SMART app.</p>
+<p>Now that we have a change, let&rsquo;s redeploy the app. Because this tutorial is built from Slate, we have a handy built-in script to deploy changes to the GitHub Pages branch. First if you haven&rsquo;t already, run <code class="prettyprint">bundle install</code>.  Then run <code class="prettyprint">./deploy.sh</code> to deploy your SMART app.</p>
 
 <p>Once the app has been redeployed go to <code class="prettyprint">https://&lt;your-username&gt;.github.io/smart-tutorial/example-smart-app/health</code> to ensure your app is available.</p>
 
@@ -222,7 +222,7 @@ GitHub Pages sites have a limit of 10 builds per hour, so if your page isn&rsquo
 
 <h1 id="registration">Registration</h1>
 
-<p>Now that we have a deployed SMART app, let&rsquo;s register it to access Cerner&rsquo;s FHIR resources. We have created a self registration console to allow any developer to be able run a SMART app against our development environment. Navigate to our <a href="https://code.cerner.com/developer/smart-on-fhir/smart_apps" target="_blank">code console</a>, if you don&rsquo;t have a Cerner Care Account, go ahead and sign up for one (it&rsquo;s free!). Once logged into the console, click on the &ldquo;+ Register New App&rdquo; button in the top right toolbar and fill in the following details:</p>
+<p>Now that we have a deployed SMART app, let&rsquo;s register it to access Cerner&rsquo;s FHIR resources. We have created a self registration console to allow any developer to be able run a SMART app against our development environment. Navigate to our <a href="https://code.cerner.com/developer/smart-on-fhir/smart_apps" target="_blank">code console</a>, if you don&rsquo;t have a Cerner Care Account, go ahead and sign up for one (it&rsquo;s free!). Once logged into the console, click on the &ldquo;+ New App&rdquo; button in the top right toolbar and fill in the following details:</p>
 
 <table><thead>
 <tr>
@@ -276,11 +276,11 @@ GitHub Pages sites have a limit of 10 builds per hour, so if your page isn&rsquo
 
 <p>We have now created our own SMART app and registered that app with Cerner to access the FHIR resources. Before we continue on with the next steps, let&rsquo;s take a moment to talk about the flow of a SMART app launch.</p>
 
-<p>The SMART app launch flow begins with the EHR. Through some method a user has indicated that they wish to launch a smart application. The EHR redirects to the SMART <code class="prettyprint">Launch URI</code> that was registered above.</p>
+<p>The SMART app launch flow begins with the EHR. Through some method, a user has indicated that they wish to launch a smart application. The EHR redirects to the SMART <code class="prettyprint">Launch URI</code> that was registered above.</p>
 
 <p>In this example <code class="prettyprint">Launch URI</code> is launch.html. launch.html redirects to the FHIR authorization server which in-turn redirects to the <code class="prettyprint">Redirect URI</code>, index.html, upon a successful authentication.</p>
 
-<p>Post authentication, index.html exchanges the returned authorization token for an access token and is then able to request resources from the FHIR server. Let&rsquo;s take a deeper look at launch.html and get it ready for authentication. For more information about the SMART app launching vist the <a href="http://docs.smarthealthit.org/authorization/" target="_blank">SMART Health IT site</a>.</p>
+<p>Post-authentication, index.html exchanges the returned authorization token for an access token and is then able to request resources from the FHIR server. Let&rsquo;s take a deeper look at launch.html and get it ready for authentication. For more information about the SMART app launching vist the <a href="http://docs.smarthealthit.org/authorization/" target="_blank">SMART Health IT site</a>.</p>
 
 <p><img title="High Level EHR APP Launch Flow" alt="alt text" src="images/ehr_launch_seq.png" /></p>
 
@@ -315,9 +315,9 @@ GitHub Pages sites have a limit of 10 builds per hour, so if your page isn&rsquo
 
 <p>The responsibility of launch.html is to redirect to the appropriate FHIR authorization server. As you can see in the code, fhir-client makes our job pretty easy. All we have to do is call <code class="prettyprint">FHIR.oauth2.authorize</code> and supply the client_id generated by the code console during registration and the scopes we registered.</p>
 
-<p>The client_id is found in the app details page that can be accessed by clicking on the application icon in the <a href="https://code.cerner.com/developer/smart-on-fhir/smart_apps" target="_blank">code console</a>. Copy the client_id into the authorize call, commit the changes back to your repo and redeploy your site.</p>
+<p>The client_id is found in the app details page that can be accessed by clicking on the application icon in the <a href="https://code.cerner.com/developer/smart-on-fhir/smart_apps" target="_blank">code console</a>. Copy the client_id into the authorize call, commit the changes back to your repo and redeploy your site using <code class="prettyprint">./deploy.sh</code>.</p>
 
-<p>For the purposed of this tutorial you don&rsquo;t need to modify the scopes, but if you want to add any more scopes, remember to update this list.</p>
+<p>For the purposed of this tutorial you don&rsquo;t need to modify the scopes. This list should match the scopes that you registered the application with.</p>
 
 <p>Below is some additional information about the scopes we&rsquo;ve selected for our app.</p>
 
@@ -357,7 +357,7 @@ GitHub Pages sites have a limit of 10 builds per hour, so if your page isn&rsquo
 We will always include launch, online_access, openid &amp; profile scopes to our app.</p>
 
 <aside class="notice">
-Cerner does not allow use of wildcards(*). So instead of patient/\*.read you will need specify a particular scope of resource you will be using. Something like patient/Patient.read, patient/Observation.read etc. For the list of resources, visit <a href='http://fhir.cerner.com/'>http://fhir.cerner.com/</a>
+Cerner does not allow use of wildcards(*). So instead of patient/\*.read you will need to specify a particular scope of resource you will be using. Something like patient/Patient.read, patient/Observation.read etc. For the list of resources, visit <a href='http://fhir.cerner.com/'>http://fhir.cerner.com/</a>
 </aside>
 
 <p>So just what exactly is the <code class="prettyprint">FHIR.oauth2.authorize</code> method doing?</p>
@@ -372,7 +372,7 @@ It then simply redirects to that endpoint, filling out the required api which in
 <p>Following the <code class="prettyprint">FHIR.oauth2.authorize</code>, the app will redirect to the authentication server, which, on a successful authentication, will redirect back to the <code class="prettyprint">Redirect URI</code>, in this case, index.html</p>
 
 <aside class="notice">
-The oauth2 client id is an identifier, not a secret as such it does not need to be hidden. It&rsquo;s used in conjunction with the other information provided through app registration to launch your application. If another app has access to your oauth2 client id they will not be able to masquerade as your application.
+The oauth2 client id is an identifier, not a secret. As such, it does not need to be hidden. It&rsquo;s used in conjunction with the other information provided through app registration to launch your application. If another app has access to your oauth2 client id they will not be able to masquerade as your application.
 </aside>
 
 <h1 id="access-token-retrieval">Access Token Retrieval</h1>
