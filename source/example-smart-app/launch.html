@@ -10,9 +10,8 @@
     <script src='./lib/fhir-client.js'></script>
     <script>
       FHIR.oauth2.authorize({
-        'client_id': '6c12dff4-24e7-4475-a742-b08972c4ea27',
-        'scope':  'Patient.read,Observation.read',
-		'grant_type': 'authorization_code'
+        'client_id': '61d72daf-b95c-4b9a-9c8c-900ce91ed7e5',
+        'scope':  'patient/Patient.read patient/Observation.read launch online_access openid profile'
       });
     </script>
   </body>
